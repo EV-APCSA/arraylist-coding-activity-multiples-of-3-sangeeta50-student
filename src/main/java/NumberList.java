@@ -23,9 +23,11 @@ public class NumberList {
      * @return list containing multiples of 3
      */
     public ArrayList<Integer> multiplesOf3() {
-        //Your code goes here
-
-        return null; // temporary so it compiles; students should replace this line
+        ArrayList<Integer> threes = new ArrayList<Integer>();
+        for (int i = 0; i < 100; i++) {
+            threes.add(3 * i);
+        }
+        return threes;
     }
 
     /**
@@ -35,9 +37,19 @@ public class NumberList {
      * @return String containing the list of numbers to print 10 numbers per line
      */
     public String toString(ArrayList<Integer> list) {
-        //Your code goes here
+        StringBuilder sb = new StringBuilder();
+        int count = 0;
 
-        return ""; // temporary so it compiles; students should replace this line
+        for (int i = 0; i < list.size(); i++) {
+            sb.append(list.get(i)).append("\t");
+            count++;
+            if (count % 10 == 0) {
+                // end of a row
+                sb.append("\n");
+            }
+        }
+
+        return sb.toString().trim();
     }
 
     /**
@@ -45,7 +57,11 @@ public class NumberList {
      * @param list - list of numbers
      */
     public void removeEvens(ArrayList<Integer> list) {
-        //Your code goes here
-
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i) % 2 == 0) {
+                list.remove(i);
+                i--; // step back so we don't skip the next element
+            }
+        }
     }
 }
