@@ -24,7 +24,7 @@ public class NumberList {
      */
     public ArrayList<Integer> multiplesOf3() {
         ArrayList<Integer> threes = new ArrayList<Integer>();
-        for (int i = 0; i < 50; i++) {
+        for (int i = 0; i < 10; i++) {
             threes.add(3 * i);
         }
         return threes;
