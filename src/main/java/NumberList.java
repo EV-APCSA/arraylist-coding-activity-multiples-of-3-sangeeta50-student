@@ -1,10 +1,10 @@
 import java.util.ArrayList;
 
 /**
- * Last name:
- * First name:
- * Student ID:
- * Period:
+ * Last name: Test
+ * First name: Student
+ * Student ID: 111111
+ * Period:1
  *
  * Write a short program to create an ArrayList to print the first 100 multiples of 3
  * starting with 0.
