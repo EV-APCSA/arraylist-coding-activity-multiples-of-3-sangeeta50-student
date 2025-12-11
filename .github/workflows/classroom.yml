@@ -13,18 +13,18 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
-    - name: JUnit tests
-      id: junit-tests
+    - name: Partial credit JUnit score
+      id: partial-credit-junit-score
       uses: classroom-resources/autograding-command-grader@v1
       with:
-        test-name: JUnit tests
+        test-name: Partial credit JUnit score
         setup-command: ''
-        command: mvn -B test
+        command: bash grade.sh
         timeout: 1
         max-score: 20
     - name: Autograding Reporter
       uses: classroom-resources/autograding-grading-reporter@v1
       env:
-        JUNIT-TESTS_RESULTS: "${{steps.junit-tests.outputs.result}}"
+        PARTIAL-CREDIT-JUNIT-SCORE_RESULTS: "${{steps.partial-credit-junit-score.outputs.result}}"
       with:
-        runners: junit-tests
+        runners: partial-credit-junit-score
