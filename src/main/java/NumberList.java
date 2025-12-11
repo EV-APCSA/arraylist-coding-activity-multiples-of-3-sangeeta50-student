@@ -24,7 +24,7 @@ public class NumberList {
      */
     public ArrayList<Integer> multiplesOf3() {
         ArrayList<Integer> threes = new ArrayList<Integer>();
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 50; i++) {
             threes.add(3 * i);
         }
         return threes;
@@ -58,7 +58,7 @@ public class NumberList {
      */
     public void removeEvens(ArrayList<Integer> list) {
         for (int i = 0; i < list.size(); i++) {
-            if (list.get(i) % 2 == 0) {
+            if (list.get(i) % 2 == 1) {
                 list.remove(i);
                 i--; // step back so we don't skip the next element
             }
