@@ -4,7 +4,7 @@ import java.util.ArrayList;
 /**
  * Last name: Test
  * First name: Student
- * Student ID:1111
+ * Student ID: 2222
  * Period:1
  * 
  * Write a short program to create an array list called to print the first 100 multiples of 3 starting with 0. 
