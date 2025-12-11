@@ -13,18 +13,83 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
-    - name: Partial credit JUnit score
-      id: partial-credit-junit-score
+    - name: removeEvens_resultsInCorrectOddSequence
+      id: removeevens_resultsincorrectoddsequence
       uses: classroom-resources/autograding-command-grader@v1
       with:
-        test-name: Partial credit JUnit score
+        test-name: removeEvens_resultsInCorrectOddSequence
         setup-command: ''
-        command: bash grade.sh
+        command: mvn -B -q -Dtest=NumberListTest#removeEvens_resultsInCorrectOddSequence
+          test
         timeout: 1
-        max-score: 20
+        max-score: 2
+    - name: multiplesOf3_firstAndLastValues
+      id: multiplesof3_firstandlastvalues
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: multiplesOf3_firstAndLastValues
+        setup-command: ''
+        command: mvn -B -q -Dtest=NumberListTest#multiplesOf3_firstAndLastValues test
+        timeout: 1
+        max-score: 3
+    - name: multiplesOf3_fullSequenceCorrect
+      id: multiplesof3_fullsequencecorrect
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: multiplesOf3_fullSequenceCorrect
+        setup-command: ''
+        command: mvn -B -q -Dtest=NumberListTest#multiplesOf3_fullSequenceCorrect
+          test
+        timeout: 5
+        max-score: 4
+    - name: toString_notNullAndHasNewlines
+      id: tostring_notnullandhasnewlines
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: toString_notNullAndHasNewlines
+        setup-command: ''
+        command: mvn -B -q -Dtest=NumberListTest#toString_containsAllNumbersInOrder
+          test
+        timeout: 1
+        max-score: 3
+    - name: removeEvens_removesAllEvenNumbers
+      id: removeevens_removesallevennumbers
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: removeEvens_removesAllEvenNumbers
+        setup-command: ''
+        command: mvn -B -q -Dtest=NumberListTest#removeEvens_removesAllEvenNumbers
+          test
+        timeout: 1
+        max-score: 2
+    - name: removeEvens_resultsInCorrectOddSequence
+      id: removeevens_resultsincorrectoddsequence
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: removeEvens_resultsInCorrectOddSequence
+        setup-command: ''
+        command: mvn -B -q -Dtest=NumberListTest#removeEvens_resultsInCorrectOddSequence
+          test
+        timeout: 1
+        max-score: 2
+    - name: toString_containsAllNumbersInOrder
+      id: tostring_containsallnumbersinorder
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: toString_containsAllNumbersInOrder
+        setup-command: ''
+        command: mvn -B -q -Dtest=NumberListTest#toString_containsAllNumbersInOrder
+          test
+        timeout: 1
+        max-score: 3
     - name: Autograding Reporter
       uses: classroom-resources/autograding-grading-reporter@v1
       env:
-        PARTIAL-CREDIT-JUNIT-SCORE_RESULTS: "${{steps.partial-credit-junit-score.outputs.result}}"
+        REMOVEEVENS_RESULTSINCORRECTODDSEQUENCE_RESULTS: "${{steps.removeevens_resultsincorrectoddsequence.outputs.result}}"
+        MULTIPLESOF3_FIRSTANDLASTVALUES_RESULTS: "${{steps.multiplesof3_firstandlastvalues.outputs.result}}"
+        MULTIPLESOF3_FULLSEQUENCECORRECT_RESULTS: "${{steps.multiplesof3_fullsequencecorrect.outputs.result}}"
+        TOSTRING_NOTNULLANDHASNEWLINES_RESULTS: "${{steps.tostring_notnullandhasnewlines.outputs.result}}"
+        REMOVEEVENS_REMOVESALLEVENNUMBERS_RESULTS: "${{steps.removeevens_removesallevennumbers.outputs.result}}"
+        TOSTRING_CONTAINSALLNUMBERSINORDER_RESULTS: "${{steps.tostring_containsallnumbersinorder.outputs.result}}"
       with:
-        runners: partial-credit-junit-score
+        runners: removeevens_resultsincorrectoddsequence,multiplesof3_firstandlastvalues,multiplesof3_fullsequencecorrect,tostring_notnullandhasnewlines,removeevens_removesallevennumbers,removeevens_resultsincorrectoddsequence,tostring_containsallnumbersinorder
